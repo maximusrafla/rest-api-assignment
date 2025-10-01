@@ -1,3 +1,5 @@
+// Source:  https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221D_CfxREPuzpStaln7Nu46azTrnVN9m4i%22%5D,%22action%22:%22open%22,%22userId%22:%22100852323996552052296%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing, 
+
 const express = require('express');
 // We need uuid to generate unique IDs as required by the assignment
 const { v4: uuidv4 } = require('uuid');
@@ -109,3 +111,11 @@ app.delete('/users/:id', (req, res) => {
 
 // Export the app so it can be used by the tests and the server start script
 module.exports = app;
+// This block will only run when you start the server directly with "npm start"
+// It will not run when the tests are running
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
